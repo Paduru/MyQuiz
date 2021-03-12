@@ -12,6 +12,7 @@ class Question {
     this.input1 = createInput("Enter Name");
     this.input2 = createInput("Enter Option No.");
     this.button = createButton("Submit");
+    this.reset = createButton("Reset");
   }
   display() {
     this.title.position(350, 0);
@@ -32,6 +33,8 @@ class Question {
 
     this.button.position(500, 300);
 
+    this.reset.position(800, 375);
+
     this.button.mousePressed(() => {
       this.hide();
       contestant.name = this.input1.value();
@@ -40,6 +43,11 @@ class Question {
       contestant.index = contestantCount;
       contestant.update();
       contestant.updateCount(contestantCount);
+    });
+
+    this.reset.mousePressed(() => {
+      contestant.updateCount(0);
+      quiz.updateState(0);
     });
   }
   hide() {
